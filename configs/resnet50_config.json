@@ -1,0 +1,36 @@
+{
+  "exp": {
+    "name": "resnet50_k-fold"
+  },
+  "data": {
+    "base_path": "data/stanford_cars_dataset",
+    "train_path": "train_crop",
+    "train_csv": "train.csv",
+    "test_path": "test_crop",
+    "test_csv": "test.csv",
+    "submission": "sample_submission.csv"
+  },
+  "model":{
+    "name": "resnet50_model.Resnet50Model",
+    "img_size": [224, 224, 3],
+    "class_num": 196,
+    "learning_rate": 0.0001,
+    "optimizer": "adam"
+  },
+  "trainer":{
+    "name": "resnet50_trainer.Resnet50Trainer",
+    "num_epochs": 20,
+    "batch_size": 32,
+    "train_ratio":0.8,
+    "verbose_training": true
+  },
+  "callbacks":{
+    "checkpoint_monitor": "val_loss",
+    "checkpoint_mode": "min",
+    "checkpoint_save_best_only": true,
+   "checkpoint_save_weights_only": true,
+    "checkpoint_verbose": true,
+    "tensorboard_write_graph": true
+  },
+  "seed": 42
+}
